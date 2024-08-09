@@ -6,7 +6,7 @@
 /*   By: dzhakhan <dzhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 17:16:00 by dzhakhan          #+#    #+#             */
-/*   Updated: 2024/07/29 12:32:07 by dzhakhan         ###   ########.fr       */
+/*   Updated: 2024/08/09 14:03:53 by dzhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-void	ft_free(char **a);
+void	ft_free(int **a);
 
 typedef struct s_list
 {

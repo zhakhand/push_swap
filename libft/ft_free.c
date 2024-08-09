@@ -6,13 +6,13 @@
 /*   By: dzhakhan <dzhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:10:50 by dzhakhan          #+#    #+#             */
-/*   Updated: 2024/08/05 17:58:25 by dzhakhan         ###   ########.fr       */
+/*   Updated: 2024/08/09 14:01:18 by dzhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free(char **a)
+void	ft_free(int **a)
 {
 	if (a && *a)
 	{

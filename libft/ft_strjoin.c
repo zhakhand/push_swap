@@ -6,7 +6,7 @@
 /*   By: dzhakhan <dzhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 13:36:29 by dzhakhan          #+#    #+#             */
-/*   Updated: 2024/07/29 14:47:39 by dzhakhan         ###   ########.fr       */
+/*   Updated: 2024/08/09 14:04:22 by dzhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	res = new_str(str_len(s1) + str_len(s2));
 	if (!res)
-		return (ft_free(&s1), ft_free(&s2), NULL);
+		return (NULL);
 	str_cpy(res, s1);
 	str_cpy(res + str_len(s1), s2);
-	ft_free(&s1);
 	return (res);
 }

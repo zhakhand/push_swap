@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   actions_2.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dzhakhan <dzhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 15:37:39 by dzhakhan          #+#    #+#             */
-/*   Updated: 2024/08/09 14:53:15 by dzhakhan         ###   ########.fr       */
+/*   Created: 2024/08/09 12:04:19 by dzhakhan          #+#    #+#             */
+/*   Updated: 2024/08/09 14:53:36 by dzhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "container.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-void	reverse_rot(t_stack **stack, int s)
-{
-	int	tail;
+# include "container.h"
 
-	if ((*stack)->sz > 1)
-	{
-		tail = (*stack)->vals[(*stack)->sz - 1];
-		erase(stack, (*stack)->sz - 1);
-		push_front(stack, tail);
-	}
-	if (s == 1)
-		ft_printf("rra\n");
-	if (s == 2)
-		ft_printf("rrb\n");
-}
+void	push_swap(t_stack **a);
+void	sort_two(t_stack **a);
+void	sort_three(t_stack **a);
+void	sort_four(t_stack **a, t_stack **b);
+void	sort_five(t_stack **a, t_stack **b);
+void	sort_any(t_stack **a);
+/*HELPERS*/
+int		is_sorted(t_stack *a);
+int		find_min(t_stack *a);
 
-void	rrr(t_stack **a, t_stack **b)
-{
-	reverse_rot(a, 0);
-	reverse_rot(b, 0);
-	ft_printf("rrr\n");
-}
+#endif
