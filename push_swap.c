@@ -6,7 +6,7 @@
 /*   By: dzhakhan <dzhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 13:47:09 by dzhakhan          #+#    #+#             */
-/*   Updated: 2024/08/09 14:54:41 by dzhakhan         ###   ########.fr       */
+/*   Updated: 2024/08/13 16:18:37 by dzhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,33 +29,33 @@ void	push_swap(t_stack **a)
 		sort_four(a, &b);
 	if ((*a)->sz == 5)
 		sort_five(a, &b);
+	ft_free(&b->vals);
 	while (i < (*a)->sz)
-		ft_printf("| %d |\n", (*a)->vals[i++]);
+	{
+		ft_printf("| %d |\n", (*a)->vals[i]);
+		i++;
+	}
 }
 
 int	main(int ac, char **av)
 {
-	int	*nums;
-	int	i;
-	int	j;
-	int	len;
+	int		*nums;
+	char	**split_arg;
+	t_stack	*a;
 
-	i = 0;
-	j = 1;
-	len = ac-1;
-	nums = malloc(len);
+	split_arg = NULL;
+	a = NULL;
+	nums = NULL;
+	if (ac < 2)
+		return error();
+	if (ac == 2)
+		nums = split_n_fill(av[1]);
+	else if (ac > 2)
+		nums = fill(av, ac - 1);
 	if (!nums)
-		return (1);
-	while (i < len)
-	{
-		nums[i] = ft_atoi(av[j]);
-		i++;
-		j++;
-	}
-	t_stack *a = init_stack(nums, len);
-	if (!a)
-		return (1);
-	if (is_sorted(a))
-		return (0);
+		return error();
+	a = init_stack(nums, arr_size(nums));
+	ft_free(&nums);
 	push_swap(&a);
+	return (0);
 }

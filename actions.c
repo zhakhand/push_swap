@@ -6,7 +6,7 @@
 /*   By: dzhakhan <dzhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:35:47 by dzhakhan          #+#    #+#             */
-/*   Updated: 2024/08/09 14:52:18 by dzhakhan         ###   ########.fr       */
+/*   Updated: 2024/08/12 11:50:47 by dzhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	swap(t_stack **stack, int s)
 
 void	ss(t_stack **a, t_stack **b)
 {
-	swap(a , 0);
-	swap(b, 0);
+	swap(&(*a) , 0);
+	swap(&(*b), 0);
 	ft_printf("ss\n");
 }
 
@@ -42,8 +42,8 @@ void	push(t_stack **from, t_stack **to, int s)
 	if ((*from)->sz > 0)
 	{
 		head = (*from)->vals[0];
-		erase(from, 0);
-		push_front(to, head);
+		erase(&(*from), 0);
+		push_front(&(*to), head);
 	}
 	if (s == 1)
 		ft_printf("pa\n");
@@ -58,8 +58,8 @@ void	rotate(t_stack **stack, int s)
 	if ((*stack)->sz >= 2)
 	{
 		head = (*stack)->vals[0];
-		erase(stack, 0);
-		push_back(stack, head);
+		erase(&(*stack), 0);
+		push_back(&(*stack), head);
 	}
 	if (s == 1)
 		ft_printf("ra\n");
@@ -69,7 +69,7 @@ void	rotate(t_stack **stack, int s)
 
 void	rr(t_stack **a, t_stack **b)
 {
-	rotate(a, 0);
-	rotate(b, 0);
+	rotate(&(*a), 0);
+	rotate(&(*b), 0);
 	ft_printf("rr\n");
 }
