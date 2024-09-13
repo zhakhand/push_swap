@@ -14,7 +14,7 @@
 
 void	sort_two(t_stack **a)
 {
-	if ((*a)->vals[0] > (*a)->vals[1])
+	if ((*a)->vals[0]->val > (*a)->vals[1]->val)
 	{
 		swap(&(*a), 1);
 	}
@@ -32,14 +32,14 @@ void	sort_three(t_stack **a)
 	}
 	if (min == 1)
 	{
-		if ((*a)->vals[0] > (*a)->vals[2])
+		if ((*a)->vals[0]->val > (*a)->vals[2]->val)
 			rotate(&(*a), 1);
-		else if ((*a)->vals[2] > (*a)->vals[0])
+		else if ((*a)->vals[2]->val > (*a)->vals[0]->val)
 			swap(&(*a), 1);
 	}
 	if (min == 2)
 	{
-		if ((*a)->vals[0] > (*a)->vals[1])
+		if ((*a)->vals[0]->val > (*a)->vals[1]->val)
 		{
 			swap(&(*a), 1);
 			reverse_rot(&(*a), 1);

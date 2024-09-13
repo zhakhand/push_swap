@@ -23,7 +23,7 @@ static int	is_num(char	*str)
 	return (1);
 }
 
-int	*split_n_fill(char *arg)
+int	*split_n_fill(char *arg, size_t sz)
 {
 	char	**split_arg;
 	int		*nums;
@@ -33,7 +33,7 @@ int	*split_n_fill(char *arg)
 	split_arg = ft_split(arg, ' ');
 	if (!split_arg || !is_valid_arg(split_arg))
 		return (NULL);
-	nums = malloc(sizeof(split_arg)/sizeof(split_arg[0]));
+	nums = malloc(sz);
 	if (!nums)
 		return (NULL);
 	while (split_arg[i] != 0)
@@ -41,6 +41,7 @@ int	*split_n_fill(char *arg)
 		nums[i] = ft_atoi(split_arg[i]);
 		i++;
 	}
+	free(split_arg);
 	return (nums);
 }
 
@@ -53,7 +54,9 @@ int	*fill(char **arg, int len)
 
 	i = 0;
 	j = 1;
-	nums = malloc(len);
+	nums = malloc(sizeof(int) * len);
+	if (has_duplicates(arg))
+		return (NULL);
 	if (!nums)
 		return (NULL);
 	while (i < len)
@@ -66,4 +69,20 @@ int	*fill(char **arg, int len)
 		j++;
 	}
 	return (nums);	
+}
+
+size_t	word_count(char *av)
+{
+	size_t	count;
+	size_t	i;
+
+	count = 1;
+	i = 0;
+	while (av[i + 1] != '\0')
+	{
+		if ((av[i] == 32) && (av[i + 1] != 32 && av[i + 1] != 0))
+			count++;
+		i++;
+	}
+	return (count);
 }

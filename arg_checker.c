@@ -46,7 +46,7 @@ static int	is_num(char **arr)
 	return (1);
 }
 
-static int	has_duplicates(char **arr)
+int	has_duplicates(char **arr)
 {
 	size_t	i;
 	size_t	j;
@@ -60,7 +60,7 @@ static int	has_duplicates(char **arr)
 		i++;
 		j++;
 	}
-	return (1);
+	return (0);
 }
 
 int	is_valid_arg(char **split_arg)

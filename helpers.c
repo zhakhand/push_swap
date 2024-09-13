@@ -12,19 +12,18 @@
 
 #include "push_swap.h"
 
-int	arr_size(int *nums)
-{
-	return (sizeof(nums)/sizeof(nums[0]));
-}
-
 int	is_sorted(t_stack *a)
 {
 	size_t	i;
+	int		val;
 
 	i = 0;
-	while (i < a->sz - 1)
+	if (!a || !a->vals)
+		exit(error());
+	val = a->vals[0]->val;
+	while (i < a->sz && a->vals)
 	{
-		if (a->vals[i] > a->vals[i + 1])
+		if (val > a->vals[i]->val)
 			return (0);
 		i++;
 	}
@@ -37,18 +36,18 @@ int	find_min(t_stack *a)
 	size_t	i;
 	size_t	offset;
 
-	min = a->vals[0];
+	min = a->vals[0]->val;
 	i = 1;
 	offset = 0;
 	while (i < a->sz)
 	{
-		if (min > a->vals[i])
-			min = a->vals[i];
+		if (min > a->vals[i]->val)
+			min = a->vals[i]->val;
 		i++; 
 	}
 	while (offset < a->sz)
 	{
-		if (a->vals[offset] == min)
+		if (a->vals[offset]->val == min)
 			break ;
 		offset++;
 	}

@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "container.h"
+#include "push_swap.h"
 
 void	swap(t_stack **stack, int s)
 {
-	int	temp;
+	t_num	*temp;
 
 	if ((*stack)->sz >= 2)
 	{
@@ -37,7 +37,7 @@ void	ss(t_stack **a, t_stack **b)
 
 void	push(t_stack **from, t_stack **to, int s)
 {
-	int	head;
+	t_num	*head;
 
 	if ((*from)->sz > 0)
 	{
@@ -53,8 +53,8 @@ void	push(t_stack **from, t_stack **to, int s)
 
 void	rotate(t_stack **stack, int s)
 {
-	int	head;
-
+	t_num	*head;
+	
 	if ((*stack)->sz >= 2)
 	{
 		head = (*stack)->vals[0];

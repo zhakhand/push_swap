@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "container.h"
+#include "push_swap.h"
 
 void	reverse_rot(t_stack **stack, int s)
 {
-	int	tail;
+	t_num	*tail;
 
 	if ((*stack)->sz > 1)
 	{
