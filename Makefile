@@ -1,4 +1,4 @@
-SRCS = actions.c actions_2.c helpers.c instructions.c push_swap.c stack_methods.c utils.c arg_checker.c frees.c
+SRCS = actions.c actions_2.c helpers.c instructions.c push_swap.c stack_methods.c utils.c arg_checker.c frees.c sorting.c stack_info.c cmds.c
 
 HEAD = push_swap.h 
 

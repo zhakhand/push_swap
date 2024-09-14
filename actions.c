@@ -12,64 +12,84 @@
 
 #include "push_swap.h"
 
-void	swap(t_stack **stack, int s)
+void	swap(t_structs **all, int s)
 {
 	t_num	*temp;
+	t_stack	*stack;
 
-	if ((*stack)->sz >= 2)
+	if (s == 1)
+		stack = (*all)->a;
+	else
+		stack = (*all)->b;
+	if (stack->sz >= 2)
 	{
-		temp = (*stack)->vals[0];
-		(*stack)->vals[0] = (*stack)->vals[1];
-		(*stack)->vals[1] = temp;
+		temp = stack->vals[0];
+		stack->vals[0] = stack->vals[1];
+		stack->vals[1] = temp;
 	}
 	if (s == 1)
-		ft_printf("sa\n");
+		add_cmd(&(*all)->cmds, "sa\n");
 	if (s == 2)
-		ft_printf("sb\n");
+		add_cmd(&(*all)->cmds, "sb\n");
 }
 
-void	ss(t_stack **a, t_stack **b)
+void	ss(t_structs **all)
 {
-	swap(&(*a) , 0);
-	swap(&(*b), 0);
-	ft_printf("ss\n");
+	swap(all, 1);
+	swap(all, 2);
 }
 
-void	push(t_stack **from, t_stack **to, int s)
+void	push(t_structs **all, int s)
 {
 	t_num	*head;
+	t_stack	*from;
+	t_stack	*to;
 
-	if ((*from)->sz > 0)
+	if (s == 1)
 	{
-		head = (*from)->vals[0];
-		erase(&(*from), 0);
-		push_front(&(*to), head);
+		from = (*all)->b;
+		to = (*all)->a;
+	}
+	else
+	{
+		from = (*all)->a;
+		to = (*all)->b;
+	}
+	if (from->sz > 0)
+	{
+		head = from->vals[0];
+		erase(&from, 0);
+		push_front(&to, head);
 	}
 	if (s == 1)
-		ft_printf("pa\n");
+		add_cmd(&(*all)->cmds, "pa\n");
 	if (s == 2)
-		ft_printf("pb\n");
+		add_cmd(&(*all)->cmds, "pb\n");
 }
 
-void	rotate(t_stack **stack, int s)
+void	rotate(t_structs **all, int s)
 {
 	t_num	*head;
+	t_stack	*stack;
 	
-	if ((*stack)->sz >= 2)
+	if (s == 1)
+		stack = (*all)->a;
+	else
+		stack = (*all)->b;
+	if (stack->sz >= 2)
 	{
-		head = (*stack)->vals[0];
-		erase(&(*stack), 0);
-		push_back(&(*stack), head);
+		head = stack->vals[0];
+		erase(&stack, 0);
+		push_back(&stack, head);
 	}
 	if (s == 1)
-		ft_printf("ra\n");
+		add_cmd(&(*all)->cmds, "ra\n");
 	if (s == 2)
-		ft_printf("rb\n");
+		add_cmd(&(*all)->cmds, "rb\n");
 }
 
-void	rr(t_stack **a, t_stack **b)
+void	rr(t_structs **all)
 {
-	rotate(&(*a), 0);
-	rotate(&(*b), 0);
-	ft_printf("rr\n");
+	rotate(all, 1);
+	rotate(all, 2);
 }

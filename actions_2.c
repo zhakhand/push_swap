@@ -12,25 +12,29 @@
 
 #include "push_swap.h"
 
-void	reverse_rot(t_stack **stack, int s)
+void	reverse_rot(t_structs **all, int s)
 {
 	t_num	*tail;
+	t_stack	*stack;
 
-	if ((*stack)->sz > 1)
+	if (s == 1)
+		stack = (*all)->a;
+	else
+		stack = (*all)->b;
+	if (stack->sz > 1)
 	{
-		tail = (*stack)->vals[(*stack)->sz - 1];
-		erase(&(*stack), (*stack)->sz - 1);
-		push_front(&(*stack), tail);
+		tail = stack->vals[stack->sz - 1];
+		erase(&stack, stack->sz - 1);
+		push_front(&stack, tail);
 	}
 	if (s == 1)
-		ft_printf("rra\n");
+		add_cmd(&(*all)->cmds, "rra\n");
 	if (s == 2)
-		ft_printf("rrb\n");
+		add_cmd(&(*all)->cmds, "rrb\n");
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	rrr(t_structs **all)
 {
-	reverse_rot(&(*a), 0);
-	reverse_rot(&(*b), 0);
-	ft_printf("rrr\n");
+	reverse_rot(all, 1);
+	reverse_rot(all, 2);
 }

@@ -12,35 +12,19 @@
 
 #include "push_swap.h"
 
-void	push_swap(t_stack **a)
+static void	till_5(t_structs **all)
 {
-	t_stack *b;
-	size_t	i;
-	
-	i = 0;
-	if (is_sorted(*a))
-		exit(error());
-	b = init_stack(NULL, (*a)->sz);
-	if (!b)
-		exit(1);
-	if ((*a)->sz == 2)
-		sort_two(a);
-	if ((*a)->sz == 3)
-		sort_three(a);
-	if ((*a)->sz == 4)
-		sort_four(a, &b);
-	if ((*a)->sz == 5)
-		sort_five(a, &b);
-	free_nums(&b);
-	free_struct(&b);
-	while (i < (*a)->sz)
-	{
-		ft_printf("| %d |\n", (*a)->vals[i]->val);
-		i++;
-	}
+	if ((*all)->a->sz == 2)
+		sort_two(all);
+	else if ((*all)->a->sz == 3)
+		sort_three(all);
+	else if ((*all)->a->sz == 4)
+		sort_four(all);
+	else if ((*all)->a->sz == 5)
+		sort_five(all);
 }
 
-int	main(int ac, char **av)
+static	t_stack	*create_n_fill(int ac, char **av)
 {
 	int		*nums;
 	size_t	arr_size;
@@ -49,7 +33,7 @@ int	main(int ac, char **av)
 	a = NULL;
 	nums = NULL;
 	if (ac < 2)
-		return error();
+		return NULL;
 	if (ac == 2)
 	{
 		arr_size = word_count(av[1]);
@@ -58,16 +42,63 @@ int	main(int ac, char **av)
 	else if (ac > 2)
 	{
 		arr_size = ac - 1;
-		nums = fill(av, ac - 1);
+		nums = fill(av, arr_size);
 	}
 	if (!nums)
-		return error();
+		return NULL;
 	a = init_stack(nums, arr_size);
 	if (!a)
-		return (free_all(&a), error());
+		return (free_all(&a), NULL);
 	ft_free(&nums);
-	push_swap(&a);
-	free_nums(&a);
-	free_struct(&a);
+	return (a);
+}
+
+void	push_swap(t_structs **all)
+{
+	t_stack *b;
+	size_t	i;
+	t_chunks	*info;
+	
+	i = 0;
+	if (is_sorted((*all)->a))
+		exit(error());
+	b = init_stack(NULL, (*all)->a->sz);
+	(*all)->b = b;
+	if (!b)
+		exit(error());
+	if ((*all)->a->sz <= 5)
+		till_5(all);
+	else
+	{
+		info = create_info(&(*all)->a);
+		if (!info)
+			exit(error());
+		(*all)->info = info;
+		sort_that_shi(all);
+	}
+	free_nums(&b);
+	free_struct(&b);
+	while (i < (*all)->a->sz)
+	{
+		ft_printf("| %d |\n", (*all)->a->vals[i]->val);
+		i++;
+	}
+}
+
+int	main(int ac, char **av)
+{
+	t_structs	*all;	
+
+	all = malloc(sizeof(t_structs));
+	if (!all)
+		return (error());
+	all->a = create_n_fill(ac, av);
+	all->cmds = NULL;
+	if (!all->a)
+		return (error());
+	push_swap(&all);
+	print_cmds(&all->cmds);
+	free_nums(&all->a);
+	free_struct(&all->a);
 	return (0);
 }

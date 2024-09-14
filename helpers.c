@@ -15,15 +15,13 @@
 int	is_sorted(t_stack *a)
 {
 	size_t	i;
-	int		val;
 
-	i = 0;
+	i = 1;
 	if (!a || !a->vals)
 		exit(error());
-	val = a->vals[0]->val;
 	while (i < a->sz && a->vals)
 	{
-		if (val > a->vals[i]->val)
+		if (a->vals[i - 1]->val > a->vals[i]->val)
 			return (0);
 		i++;
 	}
