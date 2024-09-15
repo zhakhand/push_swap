@@ -14,7 +14,7 @@
 
 void	reverse_rot(t_structs **all, int s)
 {
-	t_num	*tail;
+	t_num	tail;
 	t_stack	*stack;
 
 	if (s == 1)

@@ -1,4 +1,4 @@
-SRCS = actions.c actions_2.c helpers.c instructions.c push_swap.c stack_methods.c utils.c arg_checker.c frees.c sorting.c stack_info.c cmds.c
+SRCS = actions.c actions_2.c helpers.c instructions.c push_swap.c stack_methods.c utils.c arg_checker.c frees.c sorting.c stack_info.c cmds.c quick_sort.c rotations.c
 
 HEAD = push_swap.h 
 
@@ -15,6 +15,7 @@ CFLAGS = -Wall -Werror -Wextra
 all: ${NAME}
 
 %.o:	%.c
+		@echo "Compiling $<..."
 		${CC} ${CFLAGS} -Ilibft -Ift_printf -c $? -o $@
 
 ${NAME}:	push_swap

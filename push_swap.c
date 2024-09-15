@@ -27,7 +27,7 @@ static void	till_5(t_structs **all)
 static	t_stack	*create_n_fill(int ac, char **av)
 {
 	int		*nums;
-	size_t	arr_size;
+	int		arr_size;
 	t_stack	*a;
 
 	a = NULL;
@@ -55,8 +55,8 @@ static	t_stack	*create_n_fill(int ac, char **av)
 
 void	push_swap(t_structs **all)
 {
-	t_stack *b;
-	size_t	i;
+	t_stack 	*b;
+	int			i;
 	t_chunks	*info;
 	
 	i = 0;
@@ -80,7 +80,7 @@ void	push_swap(t_structs **all)
 	free_struct(&b);
 	while (i < (*all)->a->sz)
 	{
-		ft_printf("| %d |\n", (*all)->a->vals[i]->val);
+		ft_printf("| %d |\n", (*all)->a->vals[i].val);
 		i++;
 	}
 }
@@ -94,11 +94,15 @@ int	main(int ac, char **av)
 		return (error());
 	all->a = create_n_fill(ac, av);
 	all->cmds = NULL;
+	all->info = NULL;
 	if (!all->a)
-		return (error());
+		return (free(all), error());
 	push_swap(&all);
 	print_cmds(&all->cmds);
 	free_nums(&all->a);
 	free_struct(&all->a);
+	if (all->info)
+		free(all->info);
+	free(all);
 	return (0);
 }

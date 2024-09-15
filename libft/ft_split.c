@@ -90,7 +90,7 @@ char	**ft_split(char const *s, char c)
 	}
 	array = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!array)
-		return (NULL);
+		return ((NULL));
 	array = fill_array(array, s, c, words);
 	return (array);
 }

@@ -23,17 +23,19 @@ static int	is_num(char	*str)
 	return (1);
 }
 
-int	*split_n_fill(char *arg, size_t sz)
+int	*split_n_fill(char *arg, int sz)
 {
 	char	**split_arg;
 	int		*nums;
-	size_t	i;
+	int		i;
 
 	i = 0;
 	split_arg = ft_split(arg, ' ');
-	if (!split_arg || !is_valid_arg(split_arg))
+	if (!split_arg)
 		return (NULL);
-	nums = malloc(sz);
+	if (!is_valid_arg(split_arg))
+		return (free_arr(split_arg, sz), NULL);
+	nums = malloc(sizeof(int) * (sz + 1));
 	if (!nums)
 		return (NULL);
 	while (split_arg[i] != 0)
@@ -41,7 +43,7 @@ int	*split_n_fill(char *arg, size_t sz)
 		nums[i] = ft_atoi(split_arg[i]);
 		i++;
 	}
-	free(split_arg);
+	free_arr(split_arg, i);
 	return (nums);
 }
 
@@ -54,9 +56,9 @@ int	*fill(char **arg, int len)
 
 	i = 0;
 	j = 1;
-	nums = malloc(sizeof(int) * len);
-	if (has_duplicates(arg))
+	if (!is_valid_arg(arg + 1))
 		return (NULL);
+	nums = malloc(sizeof(int) * len);
 	if (!nums)
 		return (NULL);
 	while (i < len)
@@ -71,10 +73,10 @@ int	*fill(char **arg, int len)
 	return (nums);	
 }
 
-size_t	word_count(char *av)
+int	word_count(char *av)
 {
-	size_t	count;
-	size_t	i;
+	int	count;
+	int	i;
 
 	count = 1;
 	i = 0;
@@ -85,4 +87,24 @@ size_t	word_count(char *av)
 		i++;
 	}
 	return (count);
+}
+
+int	find_max(t_stack *stack)
+{
+	int		max;
+	int		i;
+	t_num	*vals;
+
+	if (!stack || stack->sz == 0)
+		return (-1);
+	max = 0;
+	i = 0;
+	vals = stack->vals;
+	while (i < stack->sz)
+	{
+		if (vals[i].t_ind > max)
+			max = vals[i].t_ind;
+		i++;
+	}
+	return (max);
 }

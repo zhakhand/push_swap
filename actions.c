@@ -14,7 +14,7 @@
 
 void	swap(t_structs **all, int s)
 {
-	t_num	*temp;
+	t_num	temp;
 	t_stack	*stack;
 
 	if (s == 1)
@@ -41,7 +41,7 @@ void	ss(t_structs **all)
 
 void	push(t_structs **all, int s)
 {
-	t_num	*head;
+	t_num	head;
 	t_stack	*from;
 	t_stack	*to;
 
@@ -69,7 +69,7 @@ void	push(t_structs **all, int s)
 
 void	rotate(t_structs **all, int s)
 {
-	t_num	*head;
+	t_num	head;
 	t_stack	*stack;
 	
 	if (s == 1)

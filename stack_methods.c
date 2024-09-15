@@ -12,26 +12,25 @@
 
 #include "push_swap.h"
 
-t_stack	*init_stack(int *nums, size_t len)
+t_stack	*init_stack(int *nums, int len)
 {
 	t_stack	*new_stack;
-	size_t	i;
+	t_num	val;
+	int		i;
 
 	i = 0;
 	new_stack = malloc(sizeof(t_stack));
 	if (!new_stack)
 		exit(error());
-	new_stack->vals = malloc(sizeof(t_num*) * len);
+	new_stack->vals = malloc(sizeof(t_num) * len);
 	new_stack->sz = 0;
 	if (!new_stack->vals)
 		return (NULL);
 	while (i < len && nums)
 	{
-		new_stack->vals[i] = malloc(sizeof(t_num));
-		if (!new_stack->vals[i])
-			return (NULL);
-		new_stack->vals[i]->val = nums[i];
-		new_stack->vals[i]->o_ind = i;
+		val.val = nums[i];
+		val.o_ind = i;
+		new_stack->vals[i] = val;
 		new_stack->sz++;
 		i++;
 	}
@@ -39,13 +38,13 @@ t_stack	*init_stack(int *nums, size_t len)
 	return (new_stack);
 }
 
-void	erase(t_stack **stack, size_t pos)
+void	erase(t_stack **stack, int pos)
 {
-	size_t	i;
-	t_num	**vals;
+	int		i;
+	t_num	*vals;
 
 	i = 0;
-	vals = malloc(sizeof(t_num*) * (*stack)->max_sz);
+	vals = malloc(sizeof(t_num) * (*stack)->max_sz);
 	if (!vals)
 		exit (error());
 	if (pos == 0)
@@ -69,16 +68,16 @@ void	erase(t_stack **stack, size_t pos)
 	(*stack)->sz--;
 }
 
-void	push_back(t_stack **stack, t_num *num)
+void	push_back(t_stack **stack, t_num num)
 {
 	(*stack)->vals[(*stack)->sz++] = num;
 }
 
-void	push_front(t_stack **stack, t_num *num)
+void	push_front(t_stack **stack, t_num num)
 {
-	t_num	**temp;
-	size_t	i;
-	size_t	j;
+	t_num	*temp;
+	int		i;
+	int		j;
 
 	temp = malloc(sizeof(t_num) * (*stack)->max_sz);
 	if (!temp)

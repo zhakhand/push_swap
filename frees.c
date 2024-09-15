@@ -24,3 +24,16 @@ void	free_all(t_stack **stack)
 	free_nums(stack);
 	free_struct(stack);
 }
+
+void	free_arr(char **array, int i)
+{
+	if (array && *array)
+	{
+		while (i > 0)
+		{
+			i--;
+			free(*(array + i));
+		}
+		free(array);
+	}
+}

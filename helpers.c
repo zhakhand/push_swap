@@ -14,14 +14,14 @@
 
 int	is_sorted(t_stack *a)
 {
-	size_t	i;
+	int	i;
 
 	i = 1;
 	if (!a || !a->vals)
 		exit(error());
 	while (i < a->sz && a->vals)
 	{
-		if (a->vals[i - 1]->val > a->vals[i]->val)
+		if (a->vals[i - 1].val > a->vals[i].val)
 			return (0);
 		i++;
 	}
@@ -31,21 +31,21 @@ int	is_sorted(t_stack *a)
 int	find_min(t_stack *a)
 {
 	int		min;
-	size_t	i;
-	size_t	offset;
+	int		i;
+	int		offset;
 
-	min = a->vals[0]->val;
+	min = a->vals[0].val;
 	i = 1;
 	offset = 0;
 	while (i < a->sz)
 	{
-		if (min > a->vals[i]->val)
-			min = a->vals[i]->val;
+		if (min > a->vals[i].val)
+			min = a->vals[i].val;
 		i++; 
 	}
 	while (offset < a->sz)
 	{
-		if (a->vals[offset]->val == min)
+		if (a->vals[offset].val == min)
 			break ;
 		offset++;
 	}

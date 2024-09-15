@@ -51,21 +51,24 @@ int	has_duplicates(char **arr)
 	size_t	i;
 	size_t	j;
 
-	i = 1;
-	j = 0;
+	i = 0;
 	while (arr[i] != 0)
 	{
-		if (strncmp(arr[i], arr[j], ft_strlen(arr[j])) == 0)
-			return (1);
+		j = i + 1;
+		while (arr[j] != 0)
+		{
+			if (ft_atoi(arr[j]) == ft_atoi(arr[i]))
+				return (1);
+			j++;
+		}
 		i++;
-		j++;
 	}
 	return (0);
 }
 
 int	is_valid_arg(char **split_arg)
 {
-	if (has_duplicates(split_arg))
+	if (has_duplicates(split_arg) == 1)
 		return (0);
 	if (!is_num(split_arg))
 		return (0);

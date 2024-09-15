@@ -1,5 +1,29 @@
 #include "push_swap.h"
 
+static void	set_em(t_num *nums, int sz)
+{
+	int	i;
+
+	i = 0;
+	while (i < sz)
+	{
+		nums[i].t_ind = i;
+		i++;
+	}
+}
+
+void	set_t_indices(t_structs **all)
+{
+	t_stack	*stack;  
+	t_num	*vals;
+	
+	stack = (*all)->a;
+	vals = stack->vals;
+	quick_sort(vals, 0, stack->sz - 1);
+	set_em(vals, stack->sz);
+	put_em_back(vals, stack->sz);
+}
+
 t_chunks	*create_info(t_stack **stack)
 {
 	t_chunks	*info;
