@@ -19,7 +19,7 @@ void	shi_sorted(t_structs **all)
 
 	bottom = 0;
 	rotate_max_up(all);
-	while (find_max((*all)->b) >= 0 || (*all)->b->sz > 0)
+	while (find_max((*all)->b) >= 0)
 	{
 		if ((*all)->a->sz == 0 || \
 			(*all)->b->vals[0].t_ind == (*all)->a->vals[0].t_ind - 1)
@@ -54,7 +54,7 @@ void	clear_stack_a(t_structs **all)
 	vals = a->vals;
 	while (a->sz > 0 || find_closer(a, info->low, info->up) > -1)
 	{
-		while (a->sz > 0 || find_closer(a, info->low, info->up) > -1)
+		while (find_closer(a, info->low, info->up) > -1)
 		{
 			if (a->sz > 0 && vals[0].t_ind >= info->low && vals[0].t_ind <= info->up)
 				break ;

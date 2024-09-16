@@ -57,3 +57,28 @@ int	error(void)
 	ft_printf("Error\n");
 	return (0);
 }
+
+void	add_cmd(t_comms **cmds, char *cmd)
+{
+	t_comms	*com;
+	t_comms	*curr;
+
+	if (!cmd)
+		return ;
+	com = malloc(sizeof(t_comms));
+	if (!com)
+		return ;
+	com->command = cmd;
+	com->next_cmd = NULL;
+	if (!com->command)
+		return ;
+	if (!cmds || !(*cmds))
+		*cmds = com;
+	else
+	{
+		curr = *cmds;
+		while (curr && curr->next_cmd)
+			curr = curr->next_cmd;
+		curr->next_cmd = com;
+	}
+}

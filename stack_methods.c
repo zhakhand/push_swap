@@ -44,14 +44,12 @@ void	erase(t_stack **stack, int pos)
 	t_num	*vals;
 
 	i = 0;
-	vals = malloc(sizeof(t_num) * (*stack)->max_sz);
-	if (!vals)
-		exit (error());
+	vals = (*stack)->vals;
 	if (pos == 0)
 	{
 		while (i < (*stack)->sz - 1)
 		{
-			vals[i] = (*stack)->vals[i + 1];
+			vals[i] = vals[i + 1];
 			i++;
 		}
 	}
@@ -63,8 +61,6 @@ void	erase(t_stack **stack, int pos)
 			i++;
 		}
 	}
-	free_nums(stack);
-	(*stack)->vals = vals;
 	(*stack)->sz--;
 }
 
@@ -75,23 +71,16 @@ void	push_back(t_stack **stack, t_num num)
 
 void	push_front(t_stack **stack, t_num num)
 {
-	t_num	*temp;
+	t_num	*vals;
 	int		i;
-	int		j;
 
-	temp = malloc(sizeof(t_num) * (*stack)->max_sz);
-	if (!temp)
-		return ;
-	i = 1;
-	j = 0;
-	temp[0] = num;
-	while (j < (*stack)->sz)
+	vals = (*stack)->vals;
+	i = (*stack)->sz;
+	while (i > 0)
 	{
-		temp[i] = (*stack)->vals[j];
-		i++;
-		j++;
+		vals[i] = vals[i - 1];
+		i--;
 	}
+	vals[0] = num;
 	(*stack)->sz++;
-	free_nums(stack);
-	(*stack)->vals = temp;
 }

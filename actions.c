@@ -28,9 +28,9 @@ void	swap(t_structs **all, int s)
 		stack->vals[1] = temp;
 	}
 	if (s == 1)
-		add_cmd(&(*all)->cmds, "sa\n");
+		add_cmd(&(*all)->cmds, "sa");
 	if (s == 2)
-		add_cmd(&(*all)->cmds, "sb\n");
+		add_cmd(&(*all)->cmds, "sb");
 }
 
 void	ss(t_structs **all)
@@ -62,9 +62,9 @@ void	push(t_structs **all, int s)
 		push_front(&to, head);
 	}
 	if (s == 1)
-		add_cmd(&(*all)->cmds, "pa\n");
+		add_cmd(&(*all)->cmds, "pa");
 	if (s == 2)
-		add_cmd(&(*all)->cmds, "pb\n");
+		add_cmd(&(*all)->cmds, "pb");
 }
 
 void	rotate(t_structs **all, int s)
@@ -83,9 +83,9 @@ void	rotate(t_structs **all, int s)
 		push_back(&stack, head);
 	}
 	if (s == 1)
-		add_cmd(&(*all)->cmds, "ra\n");
+		add_cmd(&(*all)->cmds, "ra");
 	if (s == 2)
-		add_cmd(&(*all)->cmds, "rb\n");
+		add_cmd(&(*all)->cmds, "rb");
 }
 
 void	rr(t_structs **all)

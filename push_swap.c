@@ -56,33 +56,33 @@ static	t_stack	*create_n_fill(int ac, char **av)
 void	push_swap(t_structs **all)
 {
 	t_stack 	*b;
-	int			i;
+	//int			i;
 	t_chunks	*info;
 	
-	i = 0;
 	if (is_sorted((*all)->a))
-		exit(error());
+		return ;
 	b = init_stack(NULL, (*all)->a->sz);
 	(*all)->b = b;
 	if (!b)
-		exit(error());
+		return ;
 	if ((*all)->a->sz <= 5)
 		till_5(all);
 	else
 	{
 		info = create_info(&(*all)->a);
 		if (!info)
-			exit(error());
+			return ;
 		(*all)->info = info;
 		sort_that_shi(all);
 	}
 	free_nums(&b);
 	free_struct(&b);
-	while (i < (*all)->a->sz)
-	{
-		ft_printf("| %d |\n", (*all)->a->vals[i].val);
-		i++;
-	}
+	// i = 0;
+	// while (i < (*all)->a->sz)
+	// {
+	// 	ft_printf("| %d |\n", (*all)->a->vals[i].val);
+	// 	i++;
+	// }
 }
 
 int	main(int ac, char **av)
@@ -98,6 +98,7 @@ int	main(int ac, char **av)
 	if (!all->a)
 		return (free(all), error());
 	push_swap(&all);
+	optimize_cmd_list(&all->cmds);
 	print_cmds(&all->cmds);
 	free_nums(&all->a);
 	free_struct(&all->a);

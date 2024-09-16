@@ -28,9 +28,9 @@ void	reverse_rot(t_structs **all, int s)
 		push_front(&stack, tail);
 	}
 	if (s == 1)
-		add_cmd(&(*all)->cmds, "rra\n");
+		add_cmd(&(*all)->cmds, "rra");
 	if (s == 2)
-		add_cmd(&(*all)->cmds, "rrb\n");
+		add_cmd(&(*all)->cmds, "rrb");
 }
 
 void	rrr(t_structs **all)

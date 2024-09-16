@@ -96,6 +96,7 @@ void	set_t_indices(t_structs **all);
 void	quick_sort(t_num *nums, int low, int high);
 void	put_em_back(t_num *nums, int sz);
 void	add_cmd(t_comms **cmds, char *cmd);
+void	optimize_cmd_list(t_comms **cmds);
 void	print_cmds(t_comms **cmds);
 void	clear_stack_a(t_structs **all);
 int		find_closer(t_stack *stack, int low, int high);
