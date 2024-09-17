@@ -40,7 +40,7 @@ static int	is_num(char **arr)
 		j = 0;
 		while (arr[i][j] != 0)
 		{
-			if (arr[i][j] < 48 || arr[i][j] > 57)
+			if (!(arr[i][j] >= 48 && arr[i][j] <= 57))
 				return (0);
 			j++;
 		}

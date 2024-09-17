@@ -55,7 +55,7 @@ int	find_min(t_stack *a)
 int	error(void)
 {
 	ft_printf("Error\n");
-	return (0);
+	return (1);
 }
 
 void	add_cmd(t_comms **cmds, char *cmd)
@@ -63,8 +63,6 @@ void	add_cmd(t_comms **cmds, char *cmd)
 	t_comms	*com;
 	t_comms	*curr;
 
-	if (!cmd)
-		return ;
 	com = malloc(sizeof(t_comms));
 	if (!com)
 		return ;

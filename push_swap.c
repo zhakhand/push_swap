@@ -32,8 +32,6 @@ static	t_stack	*create_n_fill(int ac, char **av)
 
 	a = NULL;
 	nums = NULL;
-	if (ac < 2)
-		return (NULL);
 	if (ac == 2)
 	{
 		arr_size = word_count(av[1]);
@@ -82,6 +80,11 @@ int	main(int ac, char **av)
 {
 	t_structs	*all;	
 
+	if (ac < 2)
+	{
+		ft_printf("No arguments given, pls type: ./push_swap arg1 arg2...\n");
+		return (0);
+	}
 	all = malloc(sizeof(t_structs));
 	if (!all)
 		return (error());

@@ -10,15 +10,15 @@ static int	check_swap(t_comms **cmds)
 	if (!cmds || !(*cmds))
 		return (0);
 	curr = *cmds;
-	if (ft_strncmp("sa", curr->command, 2) == 0 && \
-	ft_strncmp("sb", curr->next_cmd->command, 2) == 0)
+	if (curr->next_cmd && ft_strncmp("sa", curr->command, 2) == 0 \
+	&& ft_strncmp("sb", curr->next_cmd->command, 2) == 0)
 	{
 		to_free = curr->next_cmd;
 		curr->next_cmd = to_free->next_cmd;
 		free(to_free);
 		return (1);
 	}
-	else if (ft_strncmp("sb", curr->command, 2) == 0 \
+	else if (curr->next_cmd && ft_strncmp("sb", curr->command, 2) == 0 \
 		&& ft_strncmp("sa", curr->next_cmd->command, 2) == 0)
 	{
 		to_free = curr->next_cmd;
@@ -39,7 +39,7 @@ static int	check_r_rotate(t_comms **cmds)
 	if (!cmds || !(*cmds))
 		return (0);
 	curr = *cmds;
-	if (ft_strncmp("rra", curr->command, 3) == 0 \
+	if (curr->next_cmd && ft_strncmp("rra", curr->command, 3) == 0 \
 		&& ft_strncmp("rrb", curr->next_cmd->command, 3) == 0)
 	{
 		to_free = curr->next_cmd;
@@ -47,7 +47,7 @@ static int	check_r_rotate(t_comms **cmds)
 		free(to_free);
 		return (1);
 	}
-	else if (ft_strncmp("rrb", curr->command, 3) == 0 \
+	else if (curr->next_cmd && ft_strncmp("rrb", curr->command, 3) == 0 \
 		&& ft_strncmp("rra", curr->next_cmd->command, 3) == 0)
 	{
 		to_free = curr->next_cmd;
@@ -68,7 +68,7 @@ static int	check_rotate(t_comms **cmds)
 	if (!cmds || !(*cmds))
 		return (0);
 	curr = *cmds;
-	if (ft_strncmp("ra", curr->command, 2) == 0 \
+	if (curr->next_cmd && ft_strncmp("ra", curr->command, 2) == 0 \
 		&& ft_strncmp("rb", curr->next_cmd->command, 2) == 0)
 	{
 		to_free = curr->next_cmd;
@@ -76,7 +76,7 @@ static int	check_rotate(t_comms **cmds)
 		free(to_free);
 		return (1);
 	}
-	else if (ft_strncmp("rb", curr->command, 2) == 0 \
+	else if (curr->next_cmd && ft_strncmp("rb", curr->command, 2) == 0 \
 		&& ft_strncmp("ra", curr->next_cmd->command, 2) == 0)
 	{
 		to_free = curr->next_cmd;
@@ -117,14 +117,12 @@ void	print_cmds(t_comms **cmds)
 {
 	t_comms	*curr;
 	t_comms	*to_free;
-	//int		count;
 
 	curr = NULL;
 	to_free = NULL;
 	if (!cmds || !(*cmds))
 		return ;
 	curr = *cmds;
-	//count = (*cmds)->count;
 	while (curr)
 	{
 		ft_printf("%s\n", curr->command);
@@ -132,5 +130,4 @@ void	print_cmds(t_comms **cmds)
 		curr = curr->next_cmd;
 		free(to_free);
 	}
-	//ft_printf("%d\n", count);
 }
