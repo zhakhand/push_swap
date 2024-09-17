@@ -70,10 +70,14 @@ void	add_cmd(t_comms **cmds, char *cmd)
 		return ;
 	com->command = cmd;
 	com->next_cmd = NULL;
+	com->count = 0;
 	if (!com->command)
 		return ;
 	if (!cmds || !(*cmds))
+	{
+		com->count++;
 		*cmds = com;
+	}
 	else
 	{
 		curr = *cmds;

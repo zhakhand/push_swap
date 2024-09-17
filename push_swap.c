@@ -91,7 +91,8 @@ int	main(int ac, char **av)
 	if (!all->a)
 		return (free(all), error());
 	push_swap(&all);
-	optimize_cmd_list(&all->cmds);
+	if (all->cmds && all->cmds->count > 12)
+		optimize_cmd_list(&all->cmds);
 	print_cmds(&all->cmds);
 	free_nums(&all->a);
 	free_struct(&all->a);

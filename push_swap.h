@@ -45,6 +45,7 @@ typedef struct s_comms
 {
 	char			*command;
 	struct s_comms	*next_cmd;
+	int				count;
 }				t_comms;
 
 typedef struct s_structs
