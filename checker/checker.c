@@ -54,8 +54,9 @@ int	read_input(t_structs **all)
 		if (invalid_inst(inst))
 		{
 			gnl_free(&inst);
+			inst = get_next_line(0);
 			ft_printf("Error\n", 0);
-			return (0);
+			return (free(inst), 0);
 		}
 		perform(inst, all);
 		gnl_free(&inst);
