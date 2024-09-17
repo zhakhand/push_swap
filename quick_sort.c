@@ -12,9 +12,9 @@ static void	q_swap(t_num *a, t_num *b)
 static int	partition(t_num *nums, int low, int high)
 {
 	int		pivot;
-	int	i;
-	int	j; 
-	
+	int		i;
+	int		j;
+
 	i = low - 1;
 	j = low;
 	pivot = nums[high].val;
@@ -29,7 +29,7 @@ static int	partition(t_num *nums, int low, int high)
 	}
 	q_swap(&nums[i + 1], &nums[high]);
 	return (i + 1);
-}	
+}
 
 void	quick_sort(t_num *nums, int low, int high)
 {

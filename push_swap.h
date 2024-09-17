@@ -20,15 +20,15 @@
 typedef struct s_num
 {
 	int		val;
-	int	o_ind;
+	int		o_ind;
 	int		t_ind;
 }				t_num;
 
 typedef struct s_stack
 {
 	t_num	*vals;
-	int	sz;
-	int	max_sz;
+	int		sz;
+	int		max_sz;
 }				t_stack;
 
 typedef struct s_chunks
@@ -41,10 +41,9 @@ typedef struct s_chunks
 	int	low;
 }				t_chunks;
 
-
 typedef struct s_comms
 {
-	char	*command;
+	char			*command;
 	struct s_comms	*next_cmd;
 }				t_comms;
 
@@ -56,51 +55,51 @@ typedef struct s_structs
 	t_comms		*cmds;
 }				t_structs;
 
-
 //stack methods
-t_stack	*init_stack(int *nums, int len);
-void	erase(t_stack **stack, int pos);
-void	push_back(t_stack **stack, t_num num);
-void	push_front(t_stack **stack, t_num num);
+t_stack		*init_stack(int *nums, int len);
+void		erase(t_stack **stack, int pos);
+void		push_back(t_stack **stack, t_num num);
+void		push_front(t_stack **stack, t_num num);
 //actions
-void	swap(t_structs **all, int s);
-void	ss(t_structs **all);
-void	push(t_structs **all, int s);
-void	rotate(t_structs **all, int s);
-void	rr(t_structs **all);
-void	reverse_rot(t_structs **all, int s);
-void	rrr(t_structs **all);
+void		swap(t_structs **all, int s);
+void		ss(t_structs **all);
+void		push(t_structs **all, int s);
+void		rotate(t_structs **all, int s);
+void		rr(t_structs **all);
+void		reverse_rot(t_structs **all, int s);
+void		rrr(t_structs **all);
 
-void	push_swap(t_structs **all);
-void	sort_two(t_structs **all);
-void	sort_three(t_structs **all);
-void	sort_four(t_structs **all);
-void	sort_five(t_structs **all);
-void	sort_that_shi(t_structs **all);
+void		push_swap(t_structs **all);
+void		sort_two(t_structs **all);
+void		sort_three(t_structs **all);
+void		sort_four(t_structs **all);
+void		sort_five(t_structs **all);
+void		sort_that_shi(t_structs **all);
 /*HELPERS*/
-int		is_sorted(t_stack *a);
-int		find_min(t_stack *a);
-int		is_valid_arg(char **split_arg);
-int		error(void);
-int		*split_n_fill(char	*arg, int sz);
-int		*fill(char **arg, int len);
-int		word_count(char *av);
-void	free_nums(t_stack **stack);
-void	free_struct(t_stack **stack);
-void	free_all(t_stack **stack);
-void	free_arr(char **arr, int i);
-int		has_duplicates(char **arr);
+int			is_sorted(t_stack *a);
+int			find_min(t_stack *a);
+int			is_valid_arg(char **split_arg);
+int			error(void);
+int			*split_n_fill(char	*arg, int sz);
+int			*fill(char **arg, int len);
+int			word_count(char *av);
+void		free_nums(t_stack **stack);
+void		free_struct(t_stack **stack);
+void		free_all(t_stack **stack);
+void		free_arr(char **arr, int i);
+int			has_duplicates(char **arr);
+int			other_atoi(const char *str, int *ptr);
 
 t_chunks	*create_info(t_stack **stack);
-void	set_t_indices(t_structs **all);
-void	quick_sort(t_num *nums, int low, int high);
-void	put_em_back(t_num *nums, int sz);
-void	add_cmd(t_comms **cmds, char *cmd);
-void	optimize_cmd_list(t_comms **cmds);
-void	print_cmds(t_comms **cmds);
-void	clear_stack_a(t_structs **all);
-int		find_closer(t_stack *stack, int low, int high);
-void	call_rotation(t_structs **all, int dir, int	stack);
-void	rotate_max_up(t_structs **all);
-int		find_max(t_stack *stack);
+void		set_t_indices(t_structs **all);
+void		quick_sort(t_num *nums, int low, int high);
+void		put_em_back(t_num *nums, int sz);
+void		add_cmd(t_comms **cmds, char *cmd);
+void		optimize_cmd_list(t_comms **cmds);
+void		print_cmds(t_comms **cmds);
+void		clear_stack_a(t_structs **all);
+int			find_closer(t_stack *stack, int low, int high);
+void		call_rotation(t_structs **all, int dir, int stack);
+void		rotate_max_up(t_structs **all);
+int			find_max(t_stack *stack);
 #endif

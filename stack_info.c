@@ -14,9 +14,9 @@ static void	set_em(t_num *nums, int sz)
 
 void	set_t_indices(t_structs **all)
 {
-	t_stack	*stack;  
+	t_stack	*stack;
 	t_num	*vals;
-	
+
 	stack = (*all)->a;
 	vals = stack->vals;
 	quick_sort(vals, 0, stack->sz - 1);

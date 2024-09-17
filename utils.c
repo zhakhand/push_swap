@@ -70,7 +70,7 @@ int	*fill(char **arg, int len)
 		i++;
 		j++;
 	}
-	return (nums);	
+	return (nums);
 }
 
 int	word_count(char *av)

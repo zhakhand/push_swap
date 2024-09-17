@@ -71,7 +71,7 @@ void	rotate(t_structs **all, int s)
 {
 	t_num	head;
 	t_stack	*stack;
-	
+
 	if (s == 1)
 		stack = (*all)->a;
 	else

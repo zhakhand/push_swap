@@ -15,11 +15,14 @@
 static int	is_int(char	**arr)
 {
 	size_t	i;
-	
+	long	number;
+	int		num;
+
 	i = 0;
 	while (arr[i] != 0)
 	{
-		if (ft_atoi(arr[i]) > INT_MAX || ft_atoi(arr[i]) < INT_MIN)
+		number = other_atoi(arr[i], &num);
+		if (!number)
 			return (0);
 		i++;
 	}

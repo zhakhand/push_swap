@@ -41,7 +41,7 @@ int	find_min(t_stack *a)
 	{
 		if (min > a->vals[i].val)
 			min = a->vals[i].val;
-		i++; 
+		i++;
 	}
 	while (offset < a->sz)
 	{
@@ -81,4 +81,31 @@ void	add_cmd(t_comms **cmds, char *cmd)
 			curr = curr->next_cmd;
 		curr->next_cmd = com;
 	}
+}
+
+int	other_atoi(const char *str, int *ptr)
+{
+	long		n;
+	int			sign;
+
+	n = 0;
+	sign = 1;
+	while (*str == ' ' || *str == '\t' || *str == '\n'
+		|| *str == '\f' || *str == '\r' || *str == '\v')
+		str++;
+	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		n = n * 10 + *str - '0';
+		if (n > (long)INT_MAX + (long)(sign == -1))
+			return (0);
+		str++;
+	}
+	*ptr = (n * sign);
+	return (1);
 }

@@ -1,4 +1,3 @@
-
 #include "push_swap.h"
 
 void	free_nums(t_stack **stack)

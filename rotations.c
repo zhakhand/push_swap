@@ -28,15 +28,18 @@ static int	find_offset(t_stack *stack, int low, int high)
 static int	find_r_offset(t_stack *stack, int low, int high)
 {
 	int		offset;
+	int		price;
 	t_num	*vals;
 
 	offset = stack->sz - 1;
 	vals = stack->vals;
-	while (offset > 0)
+	price = 0;
+	while (offset >= 0)
 	{
 		if (vals[offset].t_ind >= low && vals[offset].t_ind <= high)
-			return (offset);
+			return (price);
 		offset--;
+		price++;
 	}
 	return (-1);
 }

@@ -33,7 +33,7 @@ static	t_stack	*create_n_fill(int ac, char **av)
 	a = NULL;
 	nums = NULL;
 	if (ac < 2)
-		return NULL;
+		return (NULL);
 	if (ac == 2)
 	{
 		arr_size = word_count(av[1]);
@@ -45,7 +45,7 @@ static	t_stack	*create_n_fill(int ac, char **av)
 		nums = fill(av, arr_size);
 	}
 	if (!nums)
-		return NULL;
+		return (NULL);
 	a = init_stack(nums, arr_size);
 	if (!a)
 		return (free_all(&a), NULL);
@@ -55,10 +55,9 @@ static	t_stack	*create_n_fill(int ac, char **av)
 
 void	push_swap(t_structs **all)
 {
-	t_stack 	*b;
-	//int			i;
+	t_stack		*b;
 	t_chunks	*info;
-	
+
 	if (is_sorted((*all)->a))
 		return ;
 	b = init_stack(NULL, (*all)->a->sz);
@@ -77,12 +76,6 @@ void	push_swap(t_structs **all)
 	}
 	free_nums(&b);
 	free_struct(&b);
-	// i = 0;
-	// while (i < (*all)->a->sz)
-	// {
-	// 	ft_printf("| %d |\n", (*all)->a->vals[i].val);
-	// 	i++;
-	// }
 }
 
 int	main(int ac, char **av)

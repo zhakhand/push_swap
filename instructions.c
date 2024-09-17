@@ -71,7 +71,7 @@ void	sort_four(t_structs **all)
 void	sort_five(t_structs **all)
 {
 	int	min;
-	
+
 	min = find_min((*all)->a);
 	if (min == 1)
 		rotate(all, 1);
@@ -91,4 +91,3 @@ void	sort_five(t_structs **all)
 	sort_four(all);
 	push(all, 1);
 }
-

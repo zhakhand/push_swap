@@ -21,7 +21,7 @@ void	shi_sorted(t_structs **all)
 	rotate_max_up(all);
 	while (find_max((*all)->b) >= 0)
 	{
-		if ((*all)->a->sz == 0 || \
+		if (!(*all)->a->sz || \
 			(*all)->b->vals[0].t_ind == (*all)->a->vals[0].t_ind - 1)
 		{
 			push(all, 1);
@@ -29,7 +29,7 @@ void	shi_sorted(t_structs **all)
 				bottom = another_rotation(all, bottom);
 		}
 		else if ((*all)->b->vals[0].t_ind > \
-			(*all)->a->vals[(*all)->a->sz - 1].t_ind || !bottom)
+			(*all)->a->vals[(*all)->a->sz - 1].t_ind || bottom <= 0)
 		{
 			push(all, 1);
 			rotate(all, 1);
@@ -37,31 +37,31 @@ void	shi_sorted(t_structs **all)
 		}
 		else
 			call_rotation(all, find_closer((*all)->b, \
-				(*all)->a->vals[(*all)->a->sz - 1].t_ind + 1, (*all)->a->vals[0].t_ind - 1), 2);
+				(*all)->a->vals[(*all)->a->sz - 1].t_ind + 1, \
+					(*all)->a->vals[0].t_ind - 1), 2);
 	}
 }
 
 void	clear_stack_a(t_structs **all)
 {
 	t_stack		*a;
-	t_stack		*b;
 	t_chunks	*info;
 	t_num		*vals;
 
 	a = (*all)->a;
-	b = (*all)->b;
 	info = (*all)->info;
 	vals = a->vals;
 	while (a->sz > 0 || find_closer(a, info->low, info->up) > -1)
 	{
 		while (find_closer(a, info->low, info->up) > -1)
 		{
-			if (a->sz > 0 && vals[0].t_ind >= info->low && vals[0].t_ind <= info->up)
+			if (a->sz > 0 && vals[0].t_ind >= info->low \
+			&& vals[0].t_ind <= info->up)
 				break ;
 			call_rotation(all, find_closer(a, info->low, info->up), 1);
 		}
 		push(all, 2);
-		if (b->vals[0].t_ind < info->mid)
+		if ((*all)->b->vals[0].t_ind < info->mid)
 			rotate(all, 2);
 		if (find_closer(a, info->low, info->mid) < 0)
 			info->low -= info->ch_size;

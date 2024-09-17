@@ -61,7 +61,7 @@ void	erase(t_stack **stack, int pos)
 			i++;
 		}
 	}
-	(*stack)->sz--;
+	--(*stack)->sz;
 }
 
 void	push_back(t_stack **stack, t_num num)
