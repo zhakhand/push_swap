@@ -117,12 +117,14 @@ void	print_cmds(t_comms **cmds)
 {
 	t_comms	*curr;
 	t_comms	*to_free;
+	//int		count;
 
 	curr = NULL;
 	to_free = NULL;
 	if (!cmds || !(*cmds))
 		return ;
 	curr = *cmds;
+	//count = (*cmds)->count;
 	while (curr)
 	{
 		ft_printf("%s\n", curr->command);
@@ -130,4 +132,5 @@ void	print_cmds(t_comms **cmds)
 		curr = curr->next_cmd;
 		free(to_free);
 	}
+	//ft_printf("%d\n", count);
 }

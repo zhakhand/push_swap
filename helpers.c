@@ -84,6 +84,7 @@ void	add_cmd(t_comms **cmds, char *cmd)
 		while (curr && curr->next_cmd)
 			curr = curr->next_cmd;
 		curr->next_cmd = com;
+		(*cmds)->count++;
 	}
 }
 
