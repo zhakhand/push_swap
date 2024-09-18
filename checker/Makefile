@@ -24,8 +24,8 @@ all: ${BONUS}
 ${BONUS}:	checker
 
 checker:	checker.o
-		${MAKE} -C libft
-		${MAKE} -C ft_printf
+		${MAKE} -s -C libft
+		${MAKE} -s -C ft_printf
 		${CC} ${CFLAGS} ${SRCS} -g ./libft/libft.a ./ft_printf/libftprintf.a -o checker
 
 libft:
@@ -35,8 +35,8 @@ printf:
 		make -C ft_printf
 
 clean:
-		make clean -C libft
-		make clean -C ft_printf
+		make clean -s -C libft
+		make clean -s -C ft_printf
 		${RM} ${OBJS}
 
 fclean: clean

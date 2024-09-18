@@ -6,7 +6,7 @@
 /*   By: dzhakhan <dzhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 13:47:09 by dzhakhan          #+#    #+#             */
-/*   Updated: 2024/08/13 16:18:37 by dzhakhan         ###   ########.fr       */
+/*   Updated: 2024/09/18 15:25:41 by dzhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ t_stack	*create_n_fill(int ac, char **av)
 	if (ac == 2)
 	{
 		arr_size = word_count(av[1]);
+		if (arr_size == 0)
+			return (NULL);
 		nums = split_n_fill(av[1], arr_size);
 	}
 	else if (ac > 2)

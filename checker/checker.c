@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dzhakhan <dzhakhan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 13:20:10 by dzhakhan          #+#    #+#             */
+/*   Updated: 2024/09/18 15:35:41 by dzhakhan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include "gnl/get_next_line.h"
 
@@ -54,9 +66,8 @@ int	read_input(t_structs **all)
 		if (invalid_inst(inst))
 		{
 			gnl_free(&inst);
-			inst = get_next_line(0);
-			ft_printf("Error\n", 0);
-			return (free(inst), 0);
+			inst = get_next_line(42);
+			return (gnl_free(&inst), ft_printf("Error\n"), 0);
 		}
 		perform(inst, all);
 		gnl_free(&inst);
@@ -74,10 +85,7 @@ int	main(int ac, char **av)
 	t_structs	*all;	
 
 	if (ac < 2)
-	{
-		ft_printf("No arguments given, pls type: ./checker arg1 arg2...\n");
 		return (0);
-	}
 	all = malloc(sizeof(t_structs));
 	if (!all)
 		return (error());

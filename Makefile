@@ -21,9 +21,9 @@ all: ${NAME}
 ${NAME}:	push_swap
 
 push_swap:	push_swap.o
-		${MAKE} -C libft
-		${MAKE} -C ft_printf
-		${CC} ${CFLAGS} ${SRCS} -g ./libft/libft.a ./ft_printf/libftprintf.a -o push_swap
+		${MAKE} -s -C libft
+		${MAKE} -s -C ft_printf
+		${CC} ${CFLAGS} ${SRCS} ./libft/libft.a ./ft_printf/libftprintf.a -o push_swap
 
 libft:
 		make -C libft
@@ -32,8 +32,8 @@ printf:
 		make -C ft_printf
 
 clean:
-		make clean -C libft
-		make clean -C ft_printf
+		make clean -s -C libft
+		make clean -s -C ft_printf
 		${RM} ${OBJS}
 
 fclean: clean

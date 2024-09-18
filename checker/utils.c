@@ -6,22 +6,11 @@
 /*   By: dzhakhan <dzhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 15:50:11 by dzhakhan          #+#    #+#             */
-/*   Updated: 2024/08/13 16:12:54 by dzhakhan         ###   ########.fr       */
+/*   Updated: 2024/09/18 15:25:10 by dzhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	is_num(char	*str)
-{
-	while (str && *str)
-	{
-		if (!ft_isdigit(*str))
-			return (0);
-		str++;
-	}
-	return (1);
-}
 
 int	*split_n_fill(char *arg, int sz)
 {
@@ -63,8 +52,6 @@ int	*fill(char **arg, int len)
 		return (NULL);
 	while (i < len)
 	{
-		if (!is_num(arg[j]))
-			return (NULL);
 		num = ft_atoi(arg[j]);
 		nums[i] = num;
 		i++;
@@ -78,13 +65,18 @@ int	word_count(char *av)
 	int	count;
 	int	i;
 
-	count = 1;
+	count = 0;
 	i = 0;
-	while (av[i + 1] != '\0')
+	while (*(av + i))
 	{
-		if ((av[i] == 32) && (av[i + 1] != 32 && av[i + 1] != 0))
+		if (*(av + i) != 32)
+		{
 			count++;
-		i++;
+			while (*(av + i) && (*(av + i) != 32))
+				i++;
+		}
+		else if (*(av + i) == 32)
+			i++;
 	}
 	return (count);
 }

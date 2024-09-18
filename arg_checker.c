@@ -6,7 +6,7 @@
 /*   By: dzhakhan <dzhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 14:29:32 by dzhakhan          #+#    #+#             */
-/*   Updated: 2024/08/13 15:26:44 by dzhakhan         ###   ########.fr       */
+/*   Updated: 2024/09/18 15:27:15 by dzhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,23 @@ static int	is_num(char **arr)
 {
 	size_t	i;
 	size_t	j;
+	int		sign;
 
 	i = 0;
 	while (arr[i] != 0)
 	{
 		j = 0;
+		sign = 0;
 		while (arr[i][j] != 0)
 		{
+			if ((arr[i][j] == '-' || arr[i][j] == '+') && !sign)
+			{
+				j++;
+				sign = 1;
+			}
 			if (!(arr[i][j] >= 48 && arr[i][j] <= 57))
 				return (0);
+			sign = 1;
 			j++;
 		}
 		i++;
