@@ -1,6 +1,8 @@
-SRCS = actions.c actions_2.c helpers.c instructions.c push_swap.c stack_methods.c utils.c arg_checker.c frees.c sorting.c stack_info.c cmds.c quick_sort.c rotations.c
+SRCS = srcs/actions.c srcs/actions_2.c srcs/helpers.c srcs/instructions.c push_swap.c \
+srcs/stack_methods.c srcs/utils.c srcs/arg_checker.c srcs/frees.c srcs/sorting.c srcs/stack_info.c \
+srcs/cmds.c srcs/quick_sort.c srcs/rotations.c
 
-HEAD = push_swap.h 
+HEAD = include/push_swap.h 
 
 NAME = push_swap
 

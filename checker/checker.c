@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "gnl/get_next_line.h"
+#include "./include/push_swap.h"
+#include "./gnl/get_next_line.h"
 
 static void	perform(char *inst, t_structs **all)
 {

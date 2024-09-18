@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dzhakhan <dzhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 13:20:22 by dzhakhan          #+#    #+#             */
-/*   Updated: 2024/09/18 13:20:23 by dzhakhan         ###   ########.fr       */
+/*   Created: 2024/09/18 13:19:50 by dzhakhan          #+#    #+#             */
+/*   Updated: 2024/09/18 13:19:51 by dzhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static void	q_swap(t_num *a, t_num *b)
 {

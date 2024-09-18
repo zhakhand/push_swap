@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dzhakhan <dzhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 13:19:54 by dzhakhan          #+#    #+#             */
-/*   Updated: 2024/09/18 13:19:55 by dzhakhan         ###   ########.fr       */
+/*   Created: 2024/09/18 13:20:25 by dzhakhan          #+#    #+#             */
+/*   Updated: 2024/09/18 13:20:26 by dzhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	rotate_max_up(t_structs **all)
 {

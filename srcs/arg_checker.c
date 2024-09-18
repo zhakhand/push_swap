@@ -6,11 +6,11 @@
 /*   By: dzhakhan <dzhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 14:29:32 by dzhakhan          #+#    #+#             */
-/*   Updated: 2024/09/18 15:35:27 by dzhakhan         ###   ########.fr       */
+/*   Updated: 2024/09/18 15:27:15 by dzhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static int	is_int(char	**arr)
 {

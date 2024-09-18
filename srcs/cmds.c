@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dzhakhan <dzhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 13:20:13 by dzhakhan          #+#    #+#             */
-/*   Updated: 2024/09/18 13:20:14 by dzhakhan         ###   ########.fr       */
+/*   Created: 2024/09/18 13:19:39 by dzhakhan          #+#    #+#             */
+/*   Updated: 2024/09/18 13:19:39 by dzhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static int	check_swap(t_comms **cmds)
 {
